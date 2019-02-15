@@ -1,4 +1,4 @@
-package pt.nunojsantos.movemouse.view;
+package pt.nunojsantos.movemouse.controller;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -8,11 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import pt.nunojsantos.movemouse.controller.MoveMouseController;
+import pt.nunojsantos.movemouse.service.MoveMouseService;
 
-public class GuiView extends Application implements MoveMouseView {
+public class GuiController extends Application implements MoveMouseController {
 
-	private MoveMouseController moveMouseController;
+	private MoveMouseService moveMouseService;
 	@FXML
 	private TextField timeField;
 	@FXML
@@ -24,13 +24,13 @@ public class GuiView extends Application implements MoveMouseView {
 	}
 
 	@Override
-	public void setMoveMouseController(MoveMouseController moveMouseController) {
-		this.moveMouseController = moveMouseController;
+	public void setMoveMouseService(MoveMouseService moveMouseService) {
+		this.moveMouseService = moveMouseService;
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		FXMLLoader loader = new FXMLLoader(GuiView.class.getResource("/gui.fxml"));
+		FXMLLoader loader = new FXMLLoader(GuiController.class.getResource("/gui.fxml"));
 		AnchorPane page = loader.load();
 		Scene scene = new Scene(page);
 
@@ -47,7 +47,7 @@ public class GuiView extends Application implements MoveMouseView {
 			try {
 
 				int timeInterval = Integer.parseInt(timeField.getText());
-				moveMouseController.moveMouse(timeInterval);
+				moveMouseService.moveMouse(timeInterval);
 
 			} catch (Exception e) {
 				e.printStackTrace();

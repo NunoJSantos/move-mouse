@@ -1,11 +1,11 @@
-package pt.nunojsantos.movemouse.view;
+package pt.nunojsantos.movemouse.controller;
 
-import pt.nunojsantos.movemouse.controller.MoveMouseController;
+import pt.nunojsantos.movemouse.service.MoveMouseService;
 import pt.nunojsantos.movemouse.utils.Messages;
 
-public class CliView implements MoveMouseView {
+public class CliController implements MoveMouseController {
 
-	private MoveMouseController moveMouseController;
+	private MoveMouseService moveMouseService;
 	private int timeInterval = 30000;
 
 	@Override
@@ -23,7 +23,7 @@ public class CliView implements MoveMouseView {
 				timeInterval = Integer.parseInt(args[0]) * 1000;
 			}
 
-			moveMouseController.moveMouse(timeInterval);
+			moveMouseService.moveMouse(timeInterval);
 
 		} catch (NumberFormatException e) {
 			System.err.println(Messages.BAD_USAGE);
@@ -35,8 +35,8 @@ public class CliView implements MoveMouseView {
 	}
 
 	@Override
-	public void setMoveMouseController(MoveMouseController moveMouseController) {
-		this.moveMouseController = moveMouseController;
+	public void setMoveMouseService(MoveMouseService moveMouseService) {
+		this.moveMouseService = moveMouseService;
 	}
 
 }
