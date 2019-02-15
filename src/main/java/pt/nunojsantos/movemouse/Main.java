@@ -3,20 +3,28 @@ package pt.nunojsantos.movemouse;
 import pt.nunojsantos.movemouse.controller.MoveMouseController;
 import pt.nunojsantos.movemouse.view.CliView;
 import pt.nunojsantos.movemouse.view.GuiView;
+import pt.nunojsantos.movemouse.view.MoveMouseView;
 
 public class Main {
 
 	public static void main(String... args) {
 
 		MoveMouseController moveMouseController = new MoveMouseController();
+		MoveMouseView view;
 
 		if (args.length == 0) {
-			moveMouseController.setView(new GuiView());
+			view = new GuiView();
 		} else {
-			moveMouseController.setView(new CliView());
+			view = new CliView();
 		}
 
-		moveMouseController.start(args);
+		view.setMoveMouseController(moveMouseController);
+
+		// Comment while GuiView not properly implemented
+		//moveMouseController.setView(view);
+		moveMouseController.setView(new CliView());
+
+		moveMouseController.init(args);
 
 	}
 
