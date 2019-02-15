@@ -10,19 +10,18 @@ public class Main {
 	public static void main(String... args) {
 
 		MoveMouseController moveMouseController = new MoveMouseController();
-		MoveMouseView view;
+		MoveMouseView view = new CliView();
 
-		if (args.length == 0) {
-			view = new GuiView();
-		} else {
-			view = new CliView();
-		}
+		// Comment while GuiView not properly implemented
+//		if (args.length == 0) {
+//			view = new GuiView();
+//		} else {
+//			view = new CliView();
+//		}
 
 		view.setMoveMouseController(moveMouseController);
 
-		// Comment while GuiView not properly implemented
-		//moveMouseController.setView(view);
-		moveMouseController.setView(new CliView());
+		moveMouseController.setView(view);
 
 		moveMouseController.init(args);
 

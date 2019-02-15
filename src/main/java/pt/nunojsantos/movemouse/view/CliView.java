@@ -22,11 +22,13 @@ public class CliView implements MoveMouseView {
 			if (args.length == 1) {
 				timeInterval = Integer.parseInt(args[0]) * 1000;
 			}
+
 			moveMouseController.moveMouse(timeInterval);
 
 		} catch (NumberFormatException e) {
 			System.err.println(Messages.BAD_USAGE);
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.err.println(Messages.GENERIC_ERROR);
 		}
 

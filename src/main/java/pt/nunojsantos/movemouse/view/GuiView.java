@@ -42,12 +42,13 @@ public class GuiView extends Application implements MoveMouseView {
 
 	@FXML
 	private void initialize() {
+
 		startStopButton.setOnAction(event -> {
 			try {
 
 				int timeInterval = Integer.parseInt(timeField.getText());
 				moveMouseController.moveMouse(timeInterval);
-				
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
