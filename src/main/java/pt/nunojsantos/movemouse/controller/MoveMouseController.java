@@ -19,7 +19,7 @@ public class MoveMouseController {
 					moveMouse();
 					break;
 				case 1:
-						millisecondsInterval = Integer.parseInt(args[0]);
+						millisecondsInterval = Integer.parseInt(args[0]) * 1000;
 						moveMouse();
 					break;
 				default:
