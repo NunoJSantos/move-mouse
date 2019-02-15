@@ -3,14 +3,22 @@ package pt.nunojsantos.movemouse.controller;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.Random;
+import pt.nunojsantos.movemouse.utils.Messages;
+import pt.nunojsantos.movemouse.view.CliView;
+import pt.nunojsantos.movemouse.view.GuiView;
+import pt.nunojsantos.movemouse.view.MoveMouseView;
 
 public class MoveMouseController {
 
-	private final int MAX_Y = 400;
-	private final int MAX_X = 400;
+	private static final int MAX_Y = 400;
+	private static final int MAX_X = 400;
 	private int millisecondsInterval = 30000;
 
+	private MoveMouseView view;
+
 	public void start(String... args) {
+
+		view.init();
 
 		try {
 
@@ -19,18 +27,18 @@ public class MoveMouseController {
 					moveMouse();
 					break;
 				case 1:
-						millisecondsInterval = Integer.parseInt(args[0]) * 1000;
-						moveMouse();
+					millisecondsInterval = Integer.parseInt(args[0]) * 1000;
+					moveMouse();
 					break;
 				default:
-					System.err.println("Bad Usage");
+					view.showErrorMessage(Messages.BAD_USAGE);
 					break;
 			}
 
 		} catch (NumberFormatException e) {
-			System.err.println("Bad Usage");
+			view.showErrorMessage(Messages.BAD_USAGE);
 		} catch (Exception e) {
-			System.err.println("Some error ocurred");
+			view.showErrorMessage(Messages.GENERIC_ERROR);
 		}
 
 	}
@@ -42,6 +50,10 @@ public class MoveMouseController {
 			robot.mouseMove(random.nextInt(MAX_X), random.nextInt(MAX_Y));
 			Thread.sleep(millisecondsInterval);
 		}
+	}
+
+	public void setView(MoveMouseView view) {
+		this.view = view;
 	}
 
 }
