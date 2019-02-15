@@ -1,4 +1,4 @@
-<project name="MoveMouse" basedir="." default="clean-build">
+<project name="move-mouse" basedir="." default="clean-build">
 
   <property name="version" value="0.0.1"/>
   <property name="src.dir" value="src"/>

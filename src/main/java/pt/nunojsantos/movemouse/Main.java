@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.util.Random;
 
 public class Main {
+
 	private static final int THIRTY_SECONDS = 30000;
 	private static final int MAX_Y = 400;
 	private static final int MAX_X = 400;
@@ -16,6 +17,6 @@ public class Main {
 			robot.mouseMove(random.nextInt(MAX_X), random.nextInt(MAX_Y));
 			Thread.sleep(THIRTY_SECONDS);
 		}
-}
+	}
 
 }
