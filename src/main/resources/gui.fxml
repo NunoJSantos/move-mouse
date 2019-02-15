@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+  xmlns:fx="http://javafx.com/fxml"
+  fx:controller="pt.nunojsantos.movemouse.view.GuiView"
+  prefHeight="200.0" prefWidth="200.0">
+
+  <VBox alignment="CENTER" minHeight="200" minWidth="200" spacing="15">
+    <padding>
+      <Insets topRightBottomLeft="10.0"/>
+    </padding>
+    <Text text="Time interval in seconds.&#xD;Default: 30s." textAlignment="CENTER"/>
+    <TextField fx:id="timeField" promptText="seconds" maxWidth="60"/>
+    <HBox fx:id="feedbackBox"/>
+    <Button fx:id="startStopButton" text="START"/>
+    <HBox alignment="BASELINE_RIGHT">
+      <Text text="https://github.com/nunojsantos" textAlignment="RIGHT">
+        <font>
+          <Font size="11.0"/>
+        </font>
+      </Text>
+    </HBox>
+  </VBox>
+</AnchorPane>
