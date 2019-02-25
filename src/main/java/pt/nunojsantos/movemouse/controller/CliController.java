@@ -7,6 +7,10 @@ public class CliController implements MoveMouseController {
 
 	private MoveMouseService moveMouseService;
 
+	public CliController() {
+		this.moveMouseService = new MoveMouseService();
+	}
+
 	@Override
 	public void init(String... args) {
 		System.out.println(Constants.WELCOME_CLI);
@@ -29,11 +33,6 @@ public class CliController implements MoveMouseController {
 			System.err.println(Constants.GENERIC_ERROR);
 		}
 
-	}
-
-	@Override
-	public void setMoveMouseService(MoveMouseService moveMouseService) {
-		this.moveMouseService = moveMouseService;
 	}
 
 }

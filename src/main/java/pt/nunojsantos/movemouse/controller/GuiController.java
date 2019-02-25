@@ -31,12 +31,6 @@ public class GuiController extends Application implements MoveMouseController {
 		launch(args);
 	}
 
-	@Override
-	public void setMoveMouseService(MoveMouseService moveMouseService) {
-		this.moveMouseService = moveMouseService;
-	}
-
-	@Override
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader loader = new FXMLLoader(GuiController.class.getResource("/gui.fxml"));
 		AnchorPane page = loader.load();
