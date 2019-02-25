@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import pt.nunojsantos.movemouse.utils.Constants?>
 <AnchorPane xmlns="http://javafx.com/javafx"
   xmlns:fx="http://javafx.com/fxml"
   fx:controller="pt.nunojsantos.movemouse.controller.GuiController"
@@ -17,12 +18,23 @@
     <padding>
       <Insets topRightBottomLeft="10.0"/>
     </padding>
-    <Text text="Time interval in seconds.&#xD;Default: 30s." textAlignment="CENTER"/>
+    <Text textAlignment="CENTER">
+      <text>
+        <Constants fx:constant="TEXT"/>
+      </text>
+    </Text>
     <TextField fx:id="timeField" promptText="seconds" maxWidth="60"/>
     <HBox fx:id="feedbackBox"/>
-    <Button fx:id="startStopButton" text="START"/>
+    <Button fx:id="startStopButton">
+      <text>
+        <Constants fx:constant="BUTTON_START"/>
+      </text>
+    </Button>
     <HBox alignment="BASELINE_RIGHT">
-      <Text text="https://github.com/nunojsantos" textAlignment="RIGHT">
+      <Text textAlignment="RIGHT">
+        <text>
+          <Constants fx:constant="FOOTER"/>
+        </text>
         <font>
           <Font size="11.0"/>
         </font>

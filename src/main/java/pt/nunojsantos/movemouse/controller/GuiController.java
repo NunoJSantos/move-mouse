@@ -36,7 +36,7 @@ public class GuiController extends Application implements MoveMouseController {
 		AnchorPane page = loader.load();
 		Scene scene = new Scene(page);
 
-		primaryStage.setTitle("Move Mouse");
+		primaryStage.setTitle(Constants.APP_TITLE);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
 		primaryStage.show();
@@ -52,7 +52,7 @@ public class GuiController extends Application implements MoveMouseController {
 				int secondsInterval =
 						timeField.getText().isEmpty() ? Constants.DEFAULT_TIME_INTERVAL : Integer.parseInt(timeField.getText());
 
-				startStopButton.setText("STOP");
+				startStopButton.setText(Constants.BUTTON_STOP);
 
 				task = new Task<Void>() {
 					@Override
@@ -74,7 +74,7 @@ public class GuiController extends Application implements MoveMouseController {
 				moveMouseService.stopMouse();
 				task.cancel();
 				task = null;
-				startStopButton.setText("START");
+				startStopButton.setText(Constants.BUTTON_START);
 			}
 		});
 	}
