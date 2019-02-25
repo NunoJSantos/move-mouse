@@ -20,13 +20,15 @@ public class MoveMouseService {
 		view.init(args);
 	}
 
-	public void moveMouse(int millisecondsInterval) throws AWTException, InterruptedException {
+	public void moveMouse(int secondsInterval) throws AWTException, InterruptedException {
 		if (robot == null) {
 			robot = new Robot();
 		}
 		if (random == null) {
 			random = new Random();
 		}
+
+		int millisecondsInterval = secondsInterval * 1000;
 
 		isToMove = true;
 

@@ -54,14 +54,14 @@ public class GuiController extends Application implements MoveMouseController {
 
 			if (task == null) {
 
-				int timeInterval = Integer.parseInt(timeField.getText()) * 1000;
+				int secondsInterval = Integer.parseInt(timeField.getText());
 				startStopButton.setText("STOP");
 
 				task = new Task<Void>() {
 					@Override
 					protected Void call() throws Exception {
 						try {
-							moveMouseService.moveMouse(timeInterval);
+							moveMouseService.moveMouse(secondsInterval);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

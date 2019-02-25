@@ -6,7 +6,7 @@ import pt.nunojsantos.movemouse.utils.Messages;
 public class CliController implements MoveMouseController {
 
 	private MoveMouseService moveMouseService;
-	private int timeInterval = 30000;
+	private int secondsInterval = 30;
 
 	@Override
 	public void init(String... args) {
@@ -20,10 +20,10 @@ public class CliController implements MoveMouseController {
 		try {
 
 			if (args.length == 1) {
-				timeInterval = Integer.parseInt(args[0]) * 1000;
+				secondsInterval = Integer.parseInt(args[0]);
 			}
 
-			moveMouseService.moveMouse(timeInterval);
+			moveMouseService.moveMouse(secondsInterval);
 
 		} catch (NumberFormatException e) {
 			System.err.println(Messages.BAD_USAGE);
