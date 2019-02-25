@@ -1,6 +1,7 @@
 package pt.nunojsantos.movemouse.controller;
 
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,6 +18,8 @@ public class GuiController extends Application implements MoveMouseController {
 	private TextField timeField;
 	@FXML
 	private Button startStopButton;
+
+	private Task<Void> task = null;
 
 	public GuiController() {
 		this.moveMouseService = new MoveMouseService();
@@ -48,13 +51,33 @@ public class GuiController extends Application implements MoveMouseController {
 	private void initialize() {
 
 		startStopButton.setOnAction(event -> {
-			try {
+
+			if (task == null) {
 
 				int timeInterval = Integer.parseInt(timeField.getText()) * 1000;
-				moveMouseService.moveMouse(timeInterval);
+				startStopButton.setText("STOP");
 
-			} catch (Exception e) {
-				e.printStackTrace();
+				task = new Task<Void>() {
+					@Override
+					protected Void call() throws Exception {
+						try {
+							moveMouseService.moveMouse(timeInterval);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						return null;
+					}
+				};
+
+				Thread thread = new Thread(task);
+				thread.setDaemon(true);
+				thread.start();
+
+			} else {
+				moveMouseService.stopMouse();
+				task.cancel();
+				task = null;
+				startStopButton.setText("START");
 			}
 		});
 	}

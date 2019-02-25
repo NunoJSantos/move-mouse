@@ -12,17 +12,32 @@ public class MoveMouseService {
 
 	private MoveMouseController view;
 
+	private Robot robot;
+	private Random random;
+	private boolean isToMove;
+
 	public void init(String... args) {
 		view.init(args);
 	}
 
 	public void moveMouse(int millisecondsInterval) throws AWTException, InterruptedException {
-		Robot robot = new Robot();
-		Random random = new Random();
-		while (true) {
+		if (robot == null) {
+			robot = new Robot();
+		}
+		if (random == null) {
+			random = new Random();
+		}
+
+		isToMove = true;
+
+		while (isToMove) {
 			robot.mouseMove(random.nextInt(MAX_X), random.nextInt(MAX_Y));
 			Thread.sleep(millisecondsInterval);
 		}
+	}
+
+	public void stopMouse() {
+		isToMove = false;
 	}
 
 	public void setView(MoveMouseController view) {

@@ -1,27 +1,20 @@
 package pt.nunojsantos.movemouse;
 
-import pt.nunojsantos.movemouse.controller.GuiController;
-import pt.nunojsantos.movemouse.service.MoveMouseService;
 import pt.nunojsantos.movemouse.controller.CliController;
+import pt.nunojsantos.movemouse.controller.GuiController;
 import pt.nunojsantos.movemouse.controller.MoveMouseController;
+import pt.nunojsantos.movemouse.service.MoveMouseService;
 
 public class Main {
 
 	public static void main(String... args) {
 
 		MoveMouseService moveMouseService = new MoveMouseService();
-		MoveMouseController view = new GuiController();
+		MoveMouseController controller = args.length == 0 ? new GuiController() : new CliController();
 
-		// Comment while GuiController not properly implemented
-//		if (args.length == 0) {
-//			controller = new GuiController();
-//		} else {
-//			controller = new CliController();
-//		}
+		controller.setMoveMouseService(moveMouseService);
 
-		view.setMoveMouseService(moveMouseService);
-
-		moveMouseService.setView(view);
+		moveMouseService.setView(controller);
 
 		moveMouseService.init(args);
 
