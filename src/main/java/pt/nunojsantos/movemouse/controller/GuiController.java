@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import pt.nunojsantos.movemouse.service.MoveMouseService;
+import pt.nunojsantos.movemouse.utils.Constants;
 
 public class GuiController extends Application implements MoveMouseController {
 
@@ -19,13 +20,10 @@ public class GuiController extends Application implements MoveMouseController {
 	@FXML
 	private Button startStopButton;
 
-	private int defaultTimeInterval;
-
 	private Task<Void> task = null;
 
 	public GuiController() {
 		this.moveMouseService = new MoveMouseService();
-		this.defaultTimeInterval = 30;
 	}
 
 	@Override
@@ -58,7 +56,7 @@ public class GuiController extends Application implements MoveMouseController {
 			if (task == null) {
 
 				int secondsInterval =
-						timeField.getText().isEmpty() ? defaultTimeInterval : Integer.parseInt(timeField.getText());
+						timeField.getText().isEmpty() ? Constants.DEFAULT_TIME_INTERVAL : Integer.parseInt(timeField.getText());
 
 				startStopButton.setText("STOP");
 
