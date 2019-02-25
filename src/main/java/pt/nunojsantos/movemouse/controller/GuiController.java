@@ -18,6 +18,10 @@ public class GuiController extends Application implements MoveMouseController {
 	@FXML
 	private Button startStopButton;
 
+	public GuiController() {
+		this.moveMouseService = new MoveMouseService();
+	}
+
 	@Override
 	public void init(String... args) {
 		launch(args);
@@ -46,7 +50,7 @@ public class GuiController extends Application implements MoveMouseController {
 		startStopButton.setOnAction(event -> {
 			try {
 
-				int timeInterval = Integer.parseInt(timeField.getText());
+				int timeInterval = Integer.parseInt(timeField.getText()) * 1000;
 				moveMouseService.moveMouse(timeInterval);
 
 			} catch (Exception e) {
