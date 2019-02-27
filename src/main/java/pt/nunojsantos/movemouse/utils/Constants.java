@@ -19,6 +19,7 @@ public final class Constants {
 	public static final String BUTTON_START = "START";
 	public static final String BUTTON_STOP = "STOP";
 	public static final String FOOTER = "https://github.com/nunojsantos";
+	public static final String NUMBER_FORMAT_ERROR = "You need to insert a valid number, just numeric characters!";
 
 	private Constants() {}
 }
