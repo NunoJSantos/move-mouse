@@ -36,6 +36,7 @@ public class CliController implements MoveMouseController {
 			thread.setDaemon(true);
 			thread.start();
 
+			System.out.println(Constants.FOR_EXIT);
 			while (thread.isAlive()) {
 				showSpinner();
 			}
