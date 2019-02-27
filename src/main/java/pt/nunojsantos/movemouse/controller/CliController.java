@@ -24,7 +24,21 @@ public class CliController implements MoveMouseController {
 
 			int secondsInterval = args.length == 1 ? Integer.parseInt(args[0]) : Constants.DEFAULT_TIME_INTERVAL;
 
-			moveMouseService.moveMouse(secondsInterval);
+			Runnable task = () -> {
+				try {
+					moveMouseService.moveMouse(secondsInterval);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			};
+
+			Thread thread = new Thread(task);
+			thread.setDaemon(true);
+			thread.start();
+
+			while (thread.isAlive()) {
+				showSpinner();
+			}
 
 		} catch (NumberFormatException e) {
 			System.err.println(Constants.BAD_USAGE);
@@ -33,6 +47,14 @@ public class CliController implements MoveMouseController {
 			System.err.println(Constants.GENERIC_ERROR);
 		}
 
+	}
+
+	private void showSpinner() throws InterruptedException {
+		String chars = "|/-\\";
+		for (int i = 0; i < chars.length(); i++) {
+			System.out.print("\b \b" + chars.charAt(i));
+			Thread.sleep(60);
+		}
 	}
 
 }
